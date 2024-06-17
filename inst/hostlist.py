@@ -9,7 +9,7 @@
 #                    Pär Lindfors <paran@nsc.liu.se> and
 #                    Torbjörn Lönnemark <ketl@nsc.liu.se>,
 #                    National Supercomputer Centre
-# 
+#
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 of the License, or
@@ -69,13 +69,12 @@ def expand_hostlist(hostlist, allow_duplicates=False, sort=False):
     results = []
     bracket_level = 0
     part = ""
-    
+   
     for c in hostlist + ",":
         if c == "," and bracket_level == 0:
             # Comma at top level, split!
             if part: results.extend(expand_part(part))
             part = ""
-            bad_part = False
         else:
             part += c
 
@@ -242,7 +241,7 @@ def collect_hostlist_1(left_right):
         # Add the right part unprocessed to the suffix.
         # This ensures than an already computed range expression
         # in the right part is not analyzed again.
-        suffix = suffix + right 
+        suffix = suffix + right
 
         if num_str is None:
             # A left part with no numeric part at all gets special treatment!
@@ -295,7 +294,7 @@ def collect_hostlist_1(left_right):
     # right) tuples.
 
     results = []
-    needs_another_loop = False 
+    needs_another_loop = False
 
     # Now group entries with the same prefix+suffix combination (the
     # key is the first element in the sortlist) to loop over them and
@@ -315,7 +314,7 @@ def collect_hostlist_1(left_right):
             # formatting.
             range_list = []
     
-            for ((prefix2, suffix2), num_int, num_width, host) in group:
+            for ((suffix2), num_int, num_width, host) in group:
                 if host not in remaining:
                     # Below, we will loop internally to enumate a whole range
                     # at a time. We then remove the covered hosts from the set.
@@ -425,7 +424,7 @@ def parse_slurm_tasks_per_node(s):
                 repetitions = int(repetitions)
             if repetitions > MAX_SIZE:
                 raise BadHostlist("task list repetitions too large")
-            for i in range(repetitions):
+            for _ in range(repetitions):
                 res.append(tasks)
         else:
             raise BadHostlist("bad task list syntax")
