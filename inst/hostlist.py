@@ -14,7 +14,7 @@
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 of the License, or
 # (at your option) any later version.
-# 
+#
 # This program is distributed in the hope that it will be useful, but
 # WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
@@ -69,7 +69,7 @@ def expand_hostlist(hostlist, allow_duplicates=False, sort=False):
     results = []
     bracket_level = 0
     part = ""
-   
+  
     for c in hostlist + ",":
         if c == "," and bracket_level == 0:
             # Comma at top level, split!
@@ -314,7 +314,7 @@ def collect_hostlist_1(left_right):
             # formatting.
             range_list = []
     
-            for ((suffix2), num_int, num_width, host) in group:
+            for (num_int, num_width, host) in group:
                 if host not in remaining:
                     # Below, we will loop internally to enumate a whole range
                     # at a time. We then remove the covered hosts from the set.
